@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Resources & Tools — Ultimate Reply Guy Blueprint</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  <div class="orb orb-1"></div>
+  <div class="orb orb-2"></div>
+  <div class="orb orb-3"></div>
+  <div class="grid-overlay"></div>
+  <div class="progress-bar" id="progress-bar"></div>
+
+  <nav class="nav">
+    <a href="/" class="nav-logo">⚡ Reply Guy Blueprint</a>
+    <div class="nav-links">
+      <a href="/">← Home</a>
+      <a href="/guide.html">The Guide</a>
+      <a href="#" onclick="lockSite();return false;">Lock</a>
+    </div>
+  </nav>
+
+  <!-- Locked Overlay -->
+  <div id="locked-overlay" class="locked-overlay">
+    <div class="locked-card">
+      <div class="lock-icon">🔒</div>
+      <h2>Unlock the Resources</h2>
+      <p>This content is reserved for paid members. Enter your access code.</p>
+      <div id="unlock-alert" class="alert alert-danger" style="display:none;"></div>
+      <input type="text" id="unlock-code" class="access-input" placeholder="Enter access code" onkeypress="if(event.key==='Enter')tryUnlock()">
+      <button class="btn btn-primary" id="unlock-btn" onclick="tryUnlock()">Unlock →</button>
+      <p style="margin-top:16px;font-size:13px;"><a href="/" style="color:var(--purple);">Get the blueprint →</a></p>
+    </div>
+  </div>
+
+  <!-- Resources content loads here after verification -->
+  <div id="resources-content"></div>
+
+  <footer class="footer">
+    <p>Ultimate Reply Guy Blueprint &bull; Master X. Get Paid.</p>
+  </footer>
+
+  <div class="toast" id="toast"></div>
+
+  <script src="/js/app.js"></script>
+  <script>
+    if (sessionStorage.getItem('rgb_token') === 'granted') {
+      loadResources();
+    }
+
+    async function tryUnlock() {
+      const code = document.getElementById('unlock-code').value.trim();
+      const alertEl = document.getElementById('unlock-alert');
+      const btn = document.getElementById('unlock-btn');
+
+      if (!code) {
+        alertEl.textContent = 'Enter your access code';
+        alertEl.style.display = 'block';
+        return;
+      }
+
+      btn.disabled = true;
+      btn.textContent = 'Verifying...';
+      alertEl.style.display = 'none';
+
+      try {
+        const res = await fetch('/api/verify', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ code: code })
+        });
+        const data = await res.json();
+
+        if (data.success) {
+          sessionStorage.setItem('rgb_token', 'granted');
+          loadResources();
+        } else {
+          alertEl.textContent = data.error || 'Invalid access code';
+          alertEl.style.display = 'block';
+          btn.disabled = false;
+          btn.textContent = 'Unlock →';
+        }
+      } catch (err) {
+        alertEl.textContent = 'Server error. Try again.';
+        alertEl.style.display = 'block';
+        btn.disabled = false;
+        btn.textContent = 'Unlock →';
+      }
+    }
+
+    async function loadResources() {
+      try {
+        const res = await fetch('/api/resources', {
+          headers: { 'X-Access-Token': 'granted' }
+        });
+        if (!res.ok) {
+          sessionStorage.removeItem('rgb_token');
+          return;
+        }
+        const html = await res.text();
+        document.getElementById('resources-content').innerHTML = html;
+        document.getElementById('locked-overlay').style.display = 'none';
+
+        setTimeout(() => {
+          document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+        }, 100);
+      } catch (err) {
+        console.error('Failed to load resources:', err);
+      }
+    }
+
+    function lockSite() {
+      sessionStorage.removeItem('rgb_token');
+      location.reload();
+    }
+  </script>
+</body>
+</html>

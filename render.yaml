@@ -1,0 +1,9 @@
+services:
+  - type: web
+    name: reply-guy-blueprint
+    runtime: ruby
+    buildCommand: bundle install
+    startCommand: ruby server.rb
+    envVars:
+      - key: PORT
+        value: 10000

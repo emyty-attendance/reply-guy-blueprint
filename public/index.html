@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ultimate Reply Guy Blueprint — Master X (Twitter) Replies & Get Paid</title>
+  <meta name="description" content="The complete blueprint for becoming a highly-paid reply guy on X (Twitter). Learn how to write viral replies, grow your audience, and monetize.">
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  <div class="orb orb-1"></div>
+  <div class="orb orb-2"></div>
+  <div class="orb orb-3"></div>
+  <div class="grid-overlay"></div>
+  <div class="progress-bar" id="progress-bar"></div>
+
+  <nav class="nav">
+    <a href="/" class="nav-logo">⚡ Reply Guy Blueprint</a>
+    <div class="nav-links">
+      <a href="#whats-inside">What's Inside</a>
+      <a href="#pricing">Pricing</a>
+      <a href="/guide.html">The Guide →</a>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <header class="hero">
+    <div class="container">
+      <div class="hero-badge">
+        <span class="dot"></span>
+        The Blueprint They Don't Want You to Have
+      </div>
+      <h1>
+        Become the <span class="gradient">Ultimate Reply Guy</span><br>
+        on X (Twitter)
+      </h1>
+      <p>
+        The exact system top reply guys use to write viral replies, build massive audiences, and turn their replies into real income. No fluff. Just the blueprint.
+      </p>
+      <div class="hero-cta">
+        <a href="#pricing" class="btn btn-primary">Get the Blueprint →</a>
+        <a href="/guide.html" class="btn btn-outline">Preview the Guide</a>
+      </div>
+      <div class="stats-bar">
+        <div class="stat-item">
+          <div class="stat-num">3</div>
+          <div class="stat-label">In-Depth Modules</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-num">50+</div>
+          <div class="stat-label">Proven Tactics</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-num">24/7</div>
+          <div class="stat-label">Lifetime Access</div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- What's Inside -->
+  <section class="section" id="whats-inside">
+    <div class="container">
+      <div class="reveal">
+        <div class="section-label">What's Inside</div>
+        <h2>Three Modules. One Blueprint.</h2>
+        <p class="section-subtitle">Everything you need to go from zero to a highly-paid reply guy on X.</p>
+      </div>
+      <div class="cards-grid">
+        <div class="glass-card reveal">
+          <div class="card-icon">✍️</div>
+          <h3>Module 1: The Craft of Replying</h3>
+          <p>Learn the exact reply structures that go viral. The 3-second rule, hook formulas, timing strategies, and the psychology behind replies that get 10K+ likes.</p>
+        </div>
+        <div class="glass-card reveal">
+          <div class="card-icon">📈</div>
+          <h3>Module 2: Audience Growth</h3>
+          <p>The proven system to turn replies into followers. How to pick the right accounts to reply to, build a persona, and convert profile visitors into loyal fans.</p>
+        </div>
+        <div class="glass-card reveal">
+          <div class="card-icon">💰</div>
+          <h3>Module 3: Monetization</h3>
+          <p>Turn your audience into income. Affiliate strategies, selling products, landing sponsorships, building a newsletter funnel, and pricing your services.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pricing -->
+  <section class="section" id="pricing">
+    <div class="container">
+      <div class="reveal" style="text-align:center;">
+        <div class="section-label">Get Instant Access</div>
+        <h2>One Payment. Lifetime Blueprint.</h2>
+        <p class="section-subtitle">Pay with crypto. Get the access code. Unlock everything.</p>
+      </div>
+      <div class="pricing-card reveal">
+        <div class="pricing-amount">$5 <small>USD</small></div>
+        <p style="color:var(--text-muted);margin-bottom:20px;">One-time payment. No subscriptions. Lifetime access.</p>
+        <ul class="pricing-features">
+          <li><span class="check">✓</span> Complete 3-module blueprint</li>
+          <li><span class="check">✓</span> 50+ proven reply tactics</li>
+          <li><span class="check">✓</span> Copy-paste reply templates</li>
+          <li><span class="check">✓</span> Growth & monetization playbooks</li>
+          <li><span class="check">✓</span> Lifetime access & updates</li>
+          <li><span class="check">✓</span> Resources & tools list</li>
+        </ul>
+
+        <div class="section-label" style="margin-top:24px;">Choose Payment Method</div>
+        <div class="payment-methods">
+          <div class="pay-method active" onclick="selectCoin('ETH')">
+            <span class="coin-icon coin-eth">Ξ</span> ETH
+          </div>
+          <div class="pay-method" onclick="selectCoin('BTC')">
+            <span class="coin-icon coin-btc">₿</span> BTC
+          </div>
+          <div class="pay-method" onclick="selectCoin('SOL')">
+            <span class="coin-icon coin-sol">◎</span> SOL
+          </div>
+        </div>
+
+        <div class="wallet-box" id="wallet-address" onclick="copyText(wallets[selectedCoin])">
+          0x66f145b690b7E43650b8EC4825D08085f0A6AF45
+        </div>
+        <p style="font-size:12px;color:var(--text-dim);margin-bottom:24px;">Click to copy wallet address. Send $5 worth of <span id="selected-coin-label">ETH</span> to this address.</p>
+
+        <div class="form-group" style="margin-bottom:12px;">
+          <label class="form-label" style="text-align:left;">After payment, enter your access code:</label>
+          <input type="text" id="access-code" class="access-input" placeholder="Enter access code" onkeypress="if(event.key==='Enter')submitAccess()">
+        </div>
+        <button class="btn btn-primary" onclick="submitAccess()">Unlock the Blueprint →</button>
+        <p style="font-size:12px;color:var(--text-dim);margin-top:16px;">
+          Don't have a code? Send payment to the wallet above, then contact the seller with your TX hash to receive your code.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <p>Ultimate Reply Guy Blueprint &bull; Master X. Get Paid.</p>
+    <p style="margin-top:8px;">This is a digital product. All sales final. Crypto payments are irreversible.</p>
+  </footer>
+
+  <div class="toast" id="toast"></div>
+
+  <script src="/js/app.js"></script>
+  <script>
+    async function submitAccess() {
+      const code = document.getElementById('access-code').value.trim();
+      if (!code) { showToast('Enter your access code', 'error'); return; }
+      try {
+        const res = await fetch('/api/verify', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ code: code })
+        });
+        const data = await res.json();
+        if (data.success) {
+          sessionStorage.setItem('rgb_token', 'granted');
+          showToast('Access granted! Redirecting...', 'success');
+          setTimeout(() => { window.location.href = '/guide.html'; }, 1000);
+        } else {
+          showToast(data.error || 'Invalid access code', 'error');
+        }
+      } catch (err) {
+        showToast('Server error. Try again.', 'error');
+      }
+    }
+
+    // Update coin label
+    const origSelect = selectCoin;
+    selectCoin = function(coin) {
+      origSelect(coin);
+      const label = document.getElementById('selected-coin-label');
+      if (label) label.textContent = coin;
+    };
+  </script>
+</body>
+</html>
